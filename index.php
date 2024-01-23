@@ -56,7 +56,7 @@ session_start();
         <?php if ( isset( $_SESSION["user"] ) ) : ?>
           <a href="logout.php" id="login">Logout</a>
         <?php else: ?>
-        <div class="d-flex gap-2 pb-3">
+        <div class="d-flex gap-2">
         <a href="login.php">Login<a>
         <a href="signup.php">Sign Up<a>
         </div>
@@ -116,7 +116,7 @@ session_start();
            <!-- delete -->
            
         <?php endforeach ?>
-        <?php endif; ?>
+        
         <!-- render the stuff out  -->
 
         <div class="mt-4">
@@ -133,7 +133,7 @@ session_start();
         </div>
       </div>
     </div>
-
+    <?php endif; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

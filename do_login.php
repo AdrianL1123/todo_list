@@ -20,10 +20,10 @@
   $email = $_POST["email"];
   $password = $_POST["password"];
 
-  // Step 4: error checking
-  if ( empty( $email ) || empty( $password ) ) {
-        echo "All the fields are required.";
-  } else {
+    // Step 4: error checking
+    if ( empty( $email ) || empty( $password ) ) {
+          echo "All the fields are required.";
+    } else {
     // Step 5: login the user
      // 5.1 - retrieve the user data from your users table using the email provided by the user
       // 5.1.1 - sql command (recipe)
