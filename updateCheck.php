@@ -17,7 +17,7 @@
     $checkCompleted = $_POST["checkCompleted"];
     $todo_id = $_POST["todo_id"];
 
-    //step 4 update ?
+    //step 4 update check box 
         //4.1 sql command
         if ($checkCompleted == 0 ) {
             $sql = "UPDATE todos SET completed = 1 WHERE id =:id";

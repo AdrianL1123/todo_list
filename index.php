@@ -1,4 +1,6 @@
 <?php
+// start session
+session_start();
     // step 1 list all the database info 
     $host = 'devkinsta_db';
     $database_name='TODO_list';
@@ -51,8 +53,17 @@
     >
       <div class="card-body">
         <h3 class="card-title mb-3">My Todo List</h3>
+        <?php if ( isset( $_SESSION["user"] ) ) : ?>
+          <a href="logout.php" id="login">Logout</a>
+        <?php else: ?>
+        <div class="d-flex gap-2 pb-3">
+        <a href="login.php">Login<a>
+        <a href="signup.php">Sign Up<a>
+        </div>
+         <?php endif; ?>
         <ul class="list-group">
         <!-- render the stuff out  -->
+        <?php if ( isset( $_SESSION["user"] ) ) : ?>
         <?php foreach($todos as $todo): ?>
             <ul class="list-group">
           <li
@@ -73,7 +84,7 @@
                <!-- check box -->
                 <?php if ($todo["completed"] == 0): ?>
                 <button class="btn btn-sm btn-light">
-                <i class="bi bi-square"></i>
+                <i class="bi bi-square"></i>  
                 </button> 
                 <span class="ms-2 "> <?= $todo["label"]; ?> </span>
                 <?php else: ?>
@@ -88,6 +99,7 @@
               </div>
             </div>
           </form>
+    
             <!-- updateCheck todos -->
 
             <!-- delete -->
@@ -104,6 +116,7 @@
            <!-- delete -->
            
         <?php endforeach ?>
+        <?php endif; ?>
         <!-- render the stuff out  -->
 
         <div class="mt-4">
