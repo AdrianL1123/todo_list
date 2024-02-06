@@ -1,17 +1,7 @@
 <?php
 
-   // step 1: list out all the database info
-   $host = 'devkinsta_db';
-   $database_name = 'Classroom_Management';
-   $database_user = 'root';
-   $database_password = 'f9Rry0z7a1HO6o38';
-
    // Step 2: connect to the database
-   $database = new PDO(
-    "mysql:host=$host;dbname=$database_name",
-    $database_user,
-    $database_password
-  );
+   $database = connectToDB();
 
    // Step 3: get all the data from the form using $_POST
    $name = $_POST["name"];
@@ -22,13 +12,13 @@
    // Step 4: error checking
     // 4.1 make sure all the fields are not empty
    if ( empty( $name ) || empty( $email ) || empty( $password ) || empty( $confirm_password ) ) {
-        echo "All the fields are required.";
+        setError("All the fields are required.", "/signup") ;
    } else if ( $password !== $confirm_password ) {
         // 4.2 - make sure password is match
-        echo "The password is not match";
+        setError("The password is not match", "/signup"); 
    } else if ( strlen( $password ) < 8 ) {
         // 4.3 - make sure the password length is at least 8 chars
-        echo "Your password must be at least 8 characters";
+        setError("Your password must be at least 8 characters", "/signup"); 
    } else {
         // step 5: create the user account
             // 5.1 - sql command (recipe)
@@ -43,7 +33,7 @@
             ]);
 
         // Step 6: redirect back to login.php
-        header("Location: login.php");
+        header("Location: /");
         exit;
 
    }
