@@ -1,16 +1,29 @@
 <?php
 
-     // Step 2: connect to the database
-     $database = connectToDB();
+    // start session
+    session_start();
+
+   // step 1: list out all the database info
+   $host = 'mysql';
+   $database_name = 'TODO_list';
+   $database_user = 'root';
+   $database_password = 'f9Rry0z7a1HO6o38';
+
+   // Step 2: connect to the database
+   $database = new PDO(
+    "mysql:host=$host;dbname=$database_name",
+    $database_user,
+    $database_password
+  );
 
   // Step 3: get all the data from the form using $_POST
   $email = $_POST["email"];
   $password = $_POST["password"];
 
-    // Step 4: error checking
-    if ( empty( $email ) || empty( $password ) ) {
-          setError("All the fields are required.", "/login"); 
-    } else {
+  // Step 4: error checking
+  if ( empty( $email ) || empty( $password ) ) {
+        echo "All the fields are required.";
+  } else {
     // Step 5: login the user
      // 5.1 - retrieve the user data from your users table using the email provided by the user
       // 5.1.1 - sql command (recipe)
@@ -26,7 +39,7 @@
       
       // 5.2 - make sure the $user is not empty
       if ( empty( $user ) ) {
-        setError("The email provided does not exists", "/login"); 
+        echo "The email provided does not exists";
       } else {
         // 5.3 - make sure the password is correct
         if ( password_verify( $password, $user["password"] ) ) {
@@ -34,13 +47,12 @@
           $_SESSION["user"] = $user;
 
           // Step 6: redirect back to index.php
-          header("Location: /");
+          header("Location: index.php");
           exit;
         } else {
-          setError("The password provided is incorrect", "/login"); 
+          echo "The password provided is incorrect";
         }
       }
 
 
   }
-

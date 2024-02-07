@@ -4,7 +4,6 @@
         <h5 class="card-title text-center mb-3 py-3 border-bottom">
           Sign Up a New Account
         </h5>
-        <?php require "parts/error_box.php"; ?>
         <!-- sign up form-->
         <form 
             action="/auth/signup" 
@@ -58,9 +57,10 @@
 
     <!-- Go back link -->
     <div class="text-center">
-      <a href="index.php" class="text-decoration-none"
-        ><i class="bi bi-arrow-left-circle"></i>Go back</a
+      <a href="/" class="text-decoration-none"
+        ><i class="bi bi-arrow-left-circle"></i> Go back</a
       >
     </div>
 
-    <?php require "parts/footer.php"; ?>
+<?php 
+  require "parts/footer.php";
