@@ -1,12 +1,12 @@
 <?php
 
-  // start session
   session_start();
 
   // require the functions.php file
   require "includes/functions.php";
-  require "includes/todo-auth.php";
-  require "includes/todo-class.php";
+  require "includes/class/auth.php";
+  require "includes/class-task.php";
+  require "includes/class-db.php";
 
   // get the current path the user is on
   $path = $_SERVER["REQUEST_URI"];
@@ -15,7 +15,7 @@
 
   // init classes
   $auth = new Authentication();
-  $todo = new Todo();
+  $task = new Task();
 
   // simple router system - deciding what page to load based on the url
   // Routes
@@ -27,14 +27,14 @@
     case 'auth/signup':
       $auth->signup();
       break;
-    case 'todo/Add':
-      $todo->add();
+    case 'task/add':
+      $task->add();
       break;
-    case 'todo/updateCheck':
-      $todo->update();
+    case 'task/update':
+      $task->update();
       break;
-    case 'todo/delete':
-      $todo->delete();
+    case 'task/delete':
+      $task->delete();
       break;
 
     // page routes
