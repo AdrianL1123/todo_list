@@ -3,7 +3,7 @@
   session_start();
 
   // step 1: list out all the database info
-  $host = 'mysql';
+  $host = 'devkinsta_db';
   $database_name = 'TODO_list';
   $database_user = 'root';
   $database_password = 'f9Rry0z7a1HO6o38';

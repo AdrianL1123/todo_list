@@ -2,7 +2,7 @@
 
 class DB
 {
-    public $host = 'mysql';
+    public $host = 'devkinsta_db';
     public $dbname = 'TODO_list';
     public $dbuser = 'root';
     public $dbpassword = 'f9Rry0z7a1HO6o38';
